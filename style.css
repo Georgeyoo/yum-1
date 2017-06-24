@@ -27,9 +27,13 @@ padding-right: 20px;
 	float: right;
 }
 
+
+
 .meals {
 /*	margin-top: 200px;*/
 }
+
+
 
 * {
     font-family: 'Roboto', sans-serif;
@@ -169,8 +173,6 @@ padding-right: 20px;
 
 
 
-
-
 .food-image {
 	height: 500px;
 }
@@ -190,6 +192,18 @@ padding-right: 20px;
 .masonry-container {
 	margin-top: 150px;
 
+}
+
+.search-result {
+    margin: 0 auto;
+    padding: 30px;
+
+}
+
+.item {
+    float: left;
+    width: 20%;
+    margin: 10px;
 }
 
 .clickPart{
@@ -222,7 +236,7 @@ padding-right: 20px;
 }
 
 #find-ingredient-btn {
-    width: 220px;
+    width: 260px;
     position: relative;
     left: 40%;
     margin-left: -50px;

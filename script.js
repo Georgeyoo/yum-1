@@ -69,14 +69,14 @@ $(document).ready(function() {
 		$(".ingredient-search").hide();
 		$(".recipe-search").show();
 		$(".input-container").show();
-		$("#search-result").hide();
+		$(".search-result").hide();
 	});
 
 	$("#find-ingredient-btn").on("click", function () {
 		$(".recipe-search").hide();
 		$(".ingredient-search").show();
 		$(".input-container").show();
-		$("#search-result").hide();
+		$(".search-result").hide();
 	});
 
 	//Hide search results.
@@ -114,7 +114,7 @@ $(document).ready(function() {
 
 	$(".submit-all").one("click", function(){
 		$(".input-container").hide();
-		$("#search-result").show();
+		$(".search-result").show();
 		var allIngredients = $(".ingredient-list").val().trim();
 		console.log(allIngredients);
 
@@ -122,7 +122,7 @@ $(document).ready(function() {
 		var fridgeSearchUrl = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=";
 
 		//Second part
-		var fridgeSearchKey = "&number=10&limitLicense=false&fillIngredients=true&ranking=1&limitLicense=false&mashape-key=ksQNPjlaz5mshWX43x5882DMHPUtp1ynBxNjsnjPXrtU69MEyX";
+		var fridgeSearchKey = "&number=20&limitLicense=false&fillIngredients=true&ranking=1&limitLicense=false&mashape-key=ksQNPjlaz5mshWX43x5882DMHPUtp1ynBxNjsnjPXrtU69MEyX";
 
 		var ingredientsOutput = ingredients.join('%2C');
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
 			url: url,
 			data: {
 				ingredients: ingredientsOutput,
-				number: 10,
+				number: 20,
 				method: "GET"
 			}
 			
@@ -153,22 +153,18 @@ $(document).ready(function() {
 	        	var imageID = `image-${i}`;
 
 	        	var thisResult = `
-		          <div class="tabpanel tab-pane active" id="panel-${i}">
-			          <div class="row masonry-container">
-				          <div class="col-md-4 col-sm-6 item">
-		                			<div class="thumbnail">
-		                        		<div class="caption">      				                          
-		                                        <h3 id="title-${i}"></h3>
-		                                  <a class="clickpart${i}" id="${linkID}" href="#">
-		                                  <img id="${imageID}" /> 
-		                                  </a>
-		                        </div>
-		                    </div>
-		                </div>
-		              </div>
-		            </div>
+		        	<div class="item" id="panel-${i}">
+	                	<div class="thumbnail">
+	                        <div class="caption">      				                          
+	                            <h3 id="title-${i}"></h3>
+                                <a class="clickpart${i}" id="${linkID}" href="#">
+                                	<img id="${imageID}" /> 
+                                </a>
+	                        </div>
+	                    </div>
+	                </div>
 		        `;
-		        $("#search-result").append(thisResult);
+		        $(".grid").append(thisResult);
 
 		        $('#image-'+i).attr("src", response[i].image);
 		        $(".clickpart"+i).attr("dataId", dataId).attr("title", response[i].title);
@@ -176,6 +172,16 @@ $(document).ready(function() {
 		        $('#title-'+i).text(response[i].title);
 
 			};
+
+			var $grid = $(".grid").masonry({
+				itemSelector: ".item",
+				columnWidth: 80,
+				// horizontalOrder: true,
+				isAnimated: true
+			});
+			$grid.imagesLoaded().progress(function(){
+				$grid.masonry("layout");
+			})
 
 
 		});
@@ -187,7 +193,7 @@ $(document).ready(function() {
 	//To search a desired recipe.
 	$(".submit-recipe").one("click", function(){
 		$(".input-container").hide();
-		$("#search-result").show();
+		$(".search-result").show();
 
 		var recipeInput = $("#recipe-input").val().trim();
 		recipe.push(recipeInput);
@@ -195,7 +201,7 @@ $(document).ready(function() {
 		// Second part of the URL
 		var recipeSearchKey = "&mashape-key=ksQNPjlaz5mshWX43x5882DMHPUtp1ynBxNjsnjPXrtU69MEyX";
 		//First part
-		var recipeSearchUrl = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=10&limitLicense=false&query=" + recipeInput + recipeSearchKey;
+		var recipeSearchUrl = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=20&limitLicense=false&query=" + recipeInput + recipeSearchKey;
 
 		var imagesUrl = "https://spoonacular.com/recipeImages/"
 
@@ -203,12 +209,12 @@ $(document).ready(function() {
 		//Make ajax call and dynamically create the divs using jQuery and string interpolation.
 		$.ajax ({
 			url: recipeSearchUrl,
-			number: 10,
+			number: 20,
 			method: "GET"
 		}).done(function(response) {
 		console.log(response);
 
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 20; i++) {
 				var fridgeImage = response.results[i].id;
 				var recipeInput = response.results[i].id;
 				var imagesFileName = response.results[i].image;
@@ -224,22 +230,18 @@ $(document).ready(function() {
 	        	var imageID = `image-${i}`;
 
 	        	var thisResult = `
-		          <div class="tabpanel tab-pane active" id="panel-${i}">
-			          <div class="row masonry-container">
-				          <div class="col-md-4 col-sm-6 item">
-		                			<div class="thumbnail">
-		                        		<div class="caption">      				                          
-		                                        <h3 class="test-${i}" id="title-${i}"></h3>
-		                                  <a class="clickpart${i}" id="${linkID}" href="#">
-		                                  <img id="${imageID}" /> 
-		                                  </a>
-		                        </div>
-		                    </div>
-		                </div>
-		              </div>
-		            </div>
+					<div class="item" id="panel-${i}">
+                		<div class="thumbnail">
+                        	<div class="caption">      				                          
+	                            <h3 class="test-${i}" id="title-${i}"></h3>
+	                            <a class="clickpart${i}" id="${linkID}" href="#">
+	                            <img id="${imageID}" /> 
+	                            </a>
+                        	</div>
+                    	</div>
+                	</div>
 		        `;
-		        $("#search-result").append(thisResult);
+		        $(".grid").append(thisResult);
 
 		       
 				$('#image-'+i).attr("src", actualImage);
@@ -251,6 +253,17 @@ $(document).ready(function() {
 		        // $('#title-'+i).text(response.results[i].title);
 
 			};
+
+			//Masonry images load
+			var $grid = $(".grid").masonry({
+				itemSelector: ".item",
+				columnWidth: 80,
+				// horizontalOrder: true,
+				isAnimated: true
+			});
+			$grid.imagesLoaded().progress(function(){
+				$grid.masonry("layout");
+			});
 		});
 
 		nextPage();
@@ -322,7 +335,7 @@ function nextPage() {
 	        $(".title-result").text(input);
 	        console.log(input);
 	    });
-	    $("#search-result").hide();
+	    $(".search-result").hide();
 	    $(".meals").show();
 	});
 
