@@ -8,7 +8,7 @@ padding-right: 20px;
 	margin-right: 10px;
 }
 .jumbotron {
-    background-image: url("background_image1.png");
+    background-image: url("background_image1.jpg");
     background-color: #17234E;
     margin-bottom: 0;
     min-height: 100%;
@@ -242,11 +242,95 @@ padding-right: 20px;
     margin-left: -50px;
 }
 
+#find-ingredient-btn:hover {
+    background: #D59100;
+    border-color: #D59100;
+}
+
+#find-recipe-btn:hover {
+    background: #D59100;
+    border-color: #D59100;
+}
+
+
 #find-recipe-btn {
     width: 220px;
     position: relative;
     right: -20%;
     margin-right: -50px;
 }
+
+.ingredient-search {
+    font-size: 20px;
+}
+
+.submit-recipe:hover {
+    background: #D59100;
+    border-color: #D59100;
+    color: #ffffff; 
+}
+
+.submit-recipe:click {
+    background: #D59100;
+    border-color: #D59100;
+    color: #ffffff; 
+}
+
+.recipe-search {
+    font-size: 20px;
+}
+
+.submit-recipe {
+    background-color: #384B09;
+    border-color: #384B09;
+    color: #ffffff;
+    position: center;
+    text-align: center;
+}
+
+.submit-ingredient {
+    background-color: #384B09;
+    border-color: #384B09;
+    color: #ffffff;
+    position: center;
+    text-align: center;
+}
+
+.submit-ingredient:hover {
+    background: #D59100;
+    border-color: #D59100;
+    color: #ffffff; 
+}
+
+.submit-ingredient:click {
+    background: #D59100;
+    border-color: #D59100;
+    color: #ffffff; 
+}
+
+.submit-all {
+    background-color: #36454f;
+    border-color: #36454f;
+    color: #ffffff;
+    position: center;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.submit-all:hover {
+    background: #9B9B9B;
+    border-color: #9B9B9B;
+}
+
+p {
+    color:#425026;
+    margin-left: 5px;
+    padding-left: 5px;
+    display: list-item;         
+    list-style-type: disc;       
+    list-style-position: inside;
+
+}
+
 
 
