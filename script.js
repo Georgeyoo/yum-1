@@ -86,7 +86,7 @@ $(document).ready(function() {
 	$(".submit-ingredient").on("click", function(){
 		var ingredientInput = $("#ingredient-input").val().trim();
 		ingredients.push(ingredientInput);
-		var pIngredient = $("<p>").text(ingredientInput);
+		var pIngredient = $("<p>").text("- " + ingredientInput);
 		ingredientCount++;
 		// NEED TO FIGURE OUT A WAY TO KEEP THE INGREDIENT COUNT FROM INCREASING BY ONE WHEN NO TEXT IS ENTERED UPON SUBMIT.
 		console.log(ingredientCount);
